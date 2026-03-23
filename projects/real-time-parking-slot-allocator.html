@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-20">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Real time Parking slot Allocator</title>
+    
+
+<link rel="stylesheet" type="text/css" href="../static/css/dist/styles.css?v=1774294048">
+
+    <style>
+        :root {
+            /* Dark Mode: Pure Black Background, Bright Green Text */
+            --bg-primary: #000000;
+            --bg-secondary: #003300;
+            --text-primary: #00AA00;
+            --text-secondary: #00AA00;
+            --text-accent: #00FF00;
+            --border-color: #003300;
+        }
+
+        /* Force Pure Black Background */
+        html,
+        body {
+            background-color: #000000 !important;
+            scroll-behavior: smooth !important;
+        }
+
+        nav {
+            pointer-events: auto !important;
+            z-index: 1000 !important;
+        }
+
+        nav a {
+            pointer-events: auto !important;
+        }
+
+        /* Icon Glow & Transitions */
+        .footer-icon {
+            transition: all 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            filter: drop-shadow(0 0 8px #00FF00);
+            transform: scale(1.1);
+        }
+
+        /* Certificates Page Specific Styles */
+        .folder-glow {
+            filter: drop-shadow(0 0 10px rgba(255, 180, 0, 0.4));
+        }
+
+        .certificate-card {
+            background-color: #050505;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #111;
+        }
+
+        .certificate-card:hover {
+            border-color: #00FF00;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .neon-green-text {
+            color: #00FF00;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .download-btn-neon {
+            background-color: #7FFF00;
+            /* Neon Green */
+            color: #000;
+            box-shadow: 0 0 20px rgba(127, 255, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            display: inline-block;
+        }
+
+        .download-btn-neon:hover {
+            background-color: #00FF00;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans leading-normal tracking-normal flex flex-col min-h-screen transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="bg-[var(--bg-primary)] shadow fixed w-full z-50 top-0 border-b border-[var(--border-color)] transition-colors duration-300"
+        style="background-color: rgba(0,0,0,0.97) !important; backdrop-filter: blur(8px);">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a class="nav-brand relative text-xl font-bold text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors"
+                href="../index.html">
+                <span id="nav-name" style="opacity:0; transform:translateY(-8px); display:inline-block;
+                           transition: opacity 0.7s ease, transform 0.7s ease; white-space:nowrap;">Keerthana</span>
+            </a>
+            <div class="flex items-center space-x-4">
+
+                <a href="../index.html#home"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Home</a>
+                <a href="../index.html#skills"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Skills</a>
+                <a href="../index.html#projects"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Projects</a>
+                <a href="../contact.html"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Contact</a>
+                <a href="../resume.html"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Resume</a>
+                <a href="../certificates.html"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Certificates</a>
+
+                
+                <a href="/accounts/dashboard/"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors ml-4">Dashboard</a>
+                <a href="/accounts/login/"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors ml-4">Login</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8 flex-grow pt-32 relative z-0">
+        
+
+        
+<div
+    class="max-w-4xl mx-auto bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+    
+    <img src="../media/projects/parking_allocator.png" alt="Real time Parking slot Allocator" class="w-full h-64 md:h-96 object-cover">
+    
+
+    <div class="p-8">
+        <h1 class="text-4xl font-bold mb-4 text-[var(--text-primary)]">Real time Parking slot Allocator</h1>
+        <div class="flex items-center text-sm text-[var(--text-primary)] opacity-60 mb-6">
+            <span>March 24, 2026</span>
+            <span class="mx-2">•</span>
+            <span>CPP</span>
+        </div>
+
+        <div class="prose max-w-none text-[var(--text-primary)] opacity-80 mb-8 font-mono">
+            <p>Built a Real time parking slot allocator using CPP to manage vehicles of all types in an efficient and sustainable way. Implemented secure role-based login for vehicle owner to ensure controlled access.</p>
+
+<p>Gained knowledge about backend modules and database queries, improving data retrieval speed and overall system efficiency.</p>
+
+<p>Implemented interactive features and efficient parking slot for all kinds of vehicles.</p>
+        </div>
+
+        <div class="flex space-x-4">
+            
+            <a href="https://github.com/Keerthanaprakash321/Real-time-parking-slot-allocator" target="_blank"
+                class="flex items-center px-4 py-2 bg-black border border-[var(--text-primary)] text-[var(--text-primary)] rounded hover:bg-[var(--text-primary)] hover:text-black transition font-bold">
+                Source Code
+            </a>
+            
+
+            
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-[var(--border-color)] flex justify-between items-center">
+            <a href="../index.html#projects"
+                class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors underline">&larr;
+                Back to Projects</a>
+            
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-[#003300] py-12 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-12 items-center">
+                <!-- GitHub -->
+                <a href="https://github.com/Keerthanaprakash321" target="_blank"
+                    class="footer-icon flex flex-col items-center gap-2 text-[#00AA00] hover:text-[#00FF00] transition-all group">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                    <span
+                        class="text-xs font-mono uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">GitHub</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/KeerthanaPrakashKP" target="_blank"
+                    class="footer-icon flex flex-col items-center gap-2 text-[#00AA00] hover:text-[#00FF00] transition-all group">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                    <span
+                        class="text-xs font-mono uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">LinkedIn</span>
+                </a>
+
+                <!-- Email -> Contact -->
+                <a href="../contact.html"
+                    class="footer-icon flex flex-col items-center gap-2 text-[#00AA00] hover:text-[#00FF00] transition-all group">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span
+                        class="text-xs font-mono uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Contact</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../static/js/main.js"></script>
+
+    <!-- Navbar brand scroll behaviour -->
+    <script>
+        (function () {
+            var navName = document.getElementById('nav-name');
+            if (!navName) return;
+
+            var homeSection = document.getElementById('home');
+            if (!homeSection) {
+                // Not on home page — always show Keerthana
+                navName.style.opacity = '1';
+                navName.style.transform = 'translateY(0)';
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) {
+                    // On hero — hide name
+                    navName.style.opacity = '0';
+                    navName.style.transform = 'translateY(-8px)';
+                } else {
+                    // Scrolled past hero — show Keerthana
+                    navName.style.opacity = '1';
+                    navName.style.transform = 'translateY(0)';
+                }
+            }, { threshold: 0.1 });
+
+            observer.observe(homeSection);
+        })();
+    </script>
+</body>
+
+</html>
