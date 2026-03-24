@@ -176,38 +176,98 @@
         opacity: 1;
         transform: none;
     }
+
+    /* ============================================
+       PROFILE IMAGE CSS
+    ============================================ */
+    .hero-profile-wrap {
+        opacity: 0;
+        transform: translateX(40px);
+        animation: hero-slide-in 0.8s ease 0.4s forwards;
+    }
+
+    .hero-profile-img {
+        width: 340px;
+        height: 340px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #00AA00;
+        box-shadow: 0 0 30px rgba(0, 170, 0, 0.4), 0 0 60px rgba(0, 170, 0, 0.1);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hero-profile-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(0, 170, 0, 0.6), 0 0 80px rgba(0, 170, 0, 0.2);
+    }
+    
+    .hero-layout {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        gap: 2rem;
+    }
+
+    .hero-text-side {
+        flex: 1 1 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero-image-side {
+        flex: 1 1 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 900px) {
+        .hero-layout {
+            flex-direction: column;
+            text-align: left;
+        }
+    }
 </style>
 
 
 <section id="home"
-    class="h-screen flex text-[var(--text-primary)] relative transition-colors duration-300 overflow-hidden bg-black">
+    class="h-screen flex items-center text-[var(--text-primary)] relative transition-colors duration-300 overflow-hidden bg-black">
 
 
     <div class="absolute inset-0 bg-black/50 z-0"></div>
 
+    <div class="hero-layout relative z-10">
 
-    <div class="relative z-10 w-full md:w-3/4 flex flex-col justify-center px-6 md:px-12 lg:px-24">
-        <p class="hero-greeting text-xl text-[var(--text-primary)] mb-2 font-mono tracking-widest uppercase opacity-70">
-            Hi, I'm</p>
+        <!-- Left Column -->
+        <div class="hero-text-side">
 
-        <h1
-            class="hero-name text-5xl md:text-7xl font-serif font-bold text-[var(--text-primary)] mb-4 tracking-tight leading-tight">
-            Keerthana Prakash
-        </h1>
+            <p class="hero-greeting text-2xl md:text-3xl text-[var(--text-primary)] mb-3 font-mono tracking-widest uppercase opacity-80">
+                Hi, I'm</p>
 
-        <div class="hero-subtitle-wrap mb-8">
-            <span class="hero-typewriter text-4xl md:text-5xl font-bold text-[var(--text-primary)] font-mono">Aspiring
-                Software Developer</span>
-        </div>
+            <h1
+                class="hero-name text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-[var(--text-primary)] mb-6 tracking-tight" style="line-height: 1.1;">
+                Keerthana Prakash
+            </h1>
 
-        <p
-            class="hero-para text-base md:text-lg text-[var(--text-primary)] opacity-70 max-w-xl mb-10 leading-relaxed font-mono">
-            I build scalable, efficient software solutions through hands-on projects in
-            full-stack development, algorithm design, and system architecture.
-        </p>
+            <div class="hero-subtitle-wrap mb-10">
+                <span class="hero-typewriter text-5xl md:text-6xl font-bold text-[var(--text-primary)] font-mono">Aspiring
+                    Software Developer</span>
+            </div>
 
-        <!-- Social Icons -->
-        <div class="hero-icons flex space-x-6">
+            <p
+                class="hero-para text-xl md:text-2xl text-[var(--text-primary)] opacity-80 max-w-2xl mb-12 leading-relaxed font-mono">
+                I build scalable, efficient software solutions through hands-on projects in
+                full-stack development, algorithm design, and system architecture.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="hero-icons flex space-x-8">
             <!-- GitHub -->
             <a href="https://github.com/Keerthanaprakash321" target="_blank"
                 class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors transform hover:scale-125 duration-300">
@@ -235,21 +295,17 @@
                 </svg>
             </a>
         </div>
-    </div>
+        
+        </div> <!-- End Left Column -->
 
-
-    <div class="hero-video-wrap hidden md:flex w-1/4 items-stretch relative z-10">
-        <div class="hero-video-frame w-full h-full"
-            style="border-radius:0; border:none; position:relative; overflow:hidden;">
-            <video src="/media/home.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"
-                style="border-radius:0;">
-            </video>
-
-            <div style="position:absolute; top:0; right:0; width:55%; height:100%;
-                        background:linear-gradient(to left, rgba(0,0,0,1) 0%, transparent 100%);
-                        pointer-events:none; z-index:3;"></div>
+        <!-- Right Division: Profile Photo -->
+        <div class="hero-image-side">
+            <div class="hero-profile-wrap">
+                <img src="{% static 'images/profile.jpg' %}" alt="Keerthana Prakash" class="hero-profile-img">
+            </div>
         </div>
-    </div>
+
+    </div> <!-- End hero-layout -->
 
 </section>
 
@@ -279,223 +335,6 @@
 </script>
 
 
-<!-- ===== CYBER ABOUT SECTION ===== -->
-<section id="about" class="relative min-h-screen overflow-hidden flex items-center justify-center"
-    style="background: linear-gradient(180deg, #000000 0%, #253900 35%, #000000 100%);">
-
-    <style>
-        /* Matrix Canvas */
-        #about-matrix-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Scanline Overlay */
-        .about-scanline-overlay {
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(to bottom,
-                    transparent 0px, transparent 3px,
-                    rgba(0, 0, 0, 0.12) 3px, rgba(0, 0, 0, 0.12) 4px);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Typewriter Span */
-        .about-type-span {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 0;
-            border-right: 3px solid #7FFF00;
-            vertical-align: bottom;
-            color: #7FFF00;
-            text-shadow: 0 0 10px #7FFF00, 0 0 25px #00FF00, 0 0 50px rgba(127, 255, 0, 0.4);
-            font-family: monospace;
-            letter-spacing: 2px;
-        }
-
-        .about-type-span.done {
-            border-right-color: transparent;
-        }
-
-        @keyframes about-cursor-blink {
-            50% {
-                border-right-color: transparent;
-            }
-        }
-
-        .about-type-span:not(.done) {
-            animation: about-cursor-blink 0.75s step-end infinite;
-        }
-
-        /* Glitch Effect */
-        @keyframes about-text-glitch {
-
-            0%,
-            100% {
-                text-shadow: 0 0 10px #7FFF00, 0 0 25px #00FF00;
-            }
-
-            33% {
-                text-shadow: -3px 0 #0ff, 3px 0 #f0f, 0 0 20px #7FFF00;
-            }
-
-            66% {
-                text-shadow: 3px 0 #0ff, -3px 0 #f0f, 0 0 20px #7FFF00;
-            }
-        }
-
-        .about-heading-wrap:hover .about-type-span.done {
-            animation: about-text-glitch 0.3s steps(1) infinite;
-        }
-
-        /* Cyber Bio Card */
-        .about-cyber-card {
-            position: relative;
-            background: rgba(0, 12, 0, 0.85);
-            border: 1px solid rgba(127, 255, 0, 0.25);
-            border-radius: 12px;
-            backdrop-filter: blur(12px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .about-cyber-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 0 40px 5px rgba(127, 255, 0, 0.3), 0 15px 45px rgba(0, 0, 0, 0.6);
-            border-color: rgba(127, 255, 0, 0.6);
-        }
-
-        /* Card Decoration: Top Glow Bar */
-        .about-cyber-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #7FFF00, transparent);
-            transition: width 0.5s ease;
-        }
-
-        .about-cyber-card:hover::before {
-            width: 100%;
-        }
-
-        /* Card Decoration: Left Glow Bar */
-        .about-cyber-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 0;
-            background: linear-gradient(to bottom, #7FFF00, transparent);
-            transition: height 0.5s ease;
-        }
-
-        .about-cyber-card:hover::after {
-            height: 70%;
-        }
-
-        /* Cyber Button Styles */
-        .about-cyber-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.9rem 2.8rem;
-            border: 2px solid #7FFF00;
-            border-radius: 8px;
-            color: #7FFF00;
-            font-family: monospace;
-            font-weight: 700;
-            text-decoration: none;
-            background: transparent;
-            transition: all 0.3s ease;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .about-cyber-btn:hover {
-            background: rgba(127, 255, 0, 0.18);
-            box-shadow: 0 0 35px 8px rgba(127, 255, 0, 0.4);
-            transform: translateY(-5px);
-            border-color: #00FF00;
-        }
-
-        /* Tags */
-        .about-sys-tag {
-            font-family: monospace;
-            font-size: 0.7rem;
-            color: rgba(127, 255, 0, 0.55);
-            letter-spacing: 2px;
-        }
-
-        /* Reveal animations */
-        .about-reveal-up {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .about-reveal-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-
-    <!-- Canvas for Matrix Rain -->
-    <canvas id="about-matrix-canvas"></canvas>
-    <!-- CRT Overlay -->
-    <div class="about-scanline-overlay"></div>
-
-    <div class="relative z-10 container mx-auto px-6 py-20 max-w-6xl">
-
-        <!-- Section Header -->
-        <div class="about-reveal-up text-center mb-20 about-heading-wrap">
-            <h2 class="text-5xl md:text-6xl font-bold mb-3 tracking-tighter">
-                <span id="about-typewriter-target" class="about-type-span"></span>
-            </h2>
-            <div class="mx-auto h-0.5 bg-gradient-to-r from-transparent via-[#7FFF00] to-transparent"
-                style="width: 8rem; margin-top: 0.5rem; opacity: 0.6;"></div>
-        </div>
-
-        <!-- Bio Content Card -->
-        <div class="about-reveal-up about-cyber-card p-12 md:p-20 shadow-2xl mb-12">
-            <div class="space-y-10">
-                <p
-                    class="text-xl md:text-2xl text-green-100/90 font-mono leading-relaxed text-center whitespace-pre-line">
-                    I am a passionate Computer Science and Engineering student at Lovely Professional University with a
-                    strong interest in Cyber Security and Software Development.
-
-                    I am constantly learning, adaptable, and driven to improve my technical expertise while creating
-                    efficient, secure, and impactful solutions.
-                </p>
-            </div>
-        </div>
-
-        <!-- Resume Action (Moved outside) -->
-        {% if profile.resume %}
-        <div class="about-reveal-up text-center">
-            <a href="{{ profile.resume.url }}" target="_blank" class="about-cyber-btn">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                    </path>
-                </svg>
-                Resume
-            </a>
-        </div>
-        {% endif %}
-
-    </div>
-</section>
 
 <!-- Skills Section -->
 <section id="skills"
@@ -1027,30 +866,13 @@
             <div class="proj-divider rounded"></div>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="flex flex-wrap gap-4 mb-12 justify-center">
-            <button
-                class="filter-btn px-4 py-2 rounded-full font-semibold transition bg-[var(--text-primary)] text-black"
-                data-filter="all">All</button>
-            <button
-                class="filter-btn px-4 py-2 rounded-full font-semibold transition bg-[var(--bg-secondary)] text-[var(--text-primary)] border border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-black"
-                data-filter="django">Django</button>
-            <button
-                class="filter-btn px-4 py-2 rounded-full font-semibold transition bg-[var(--bg-secondary)] text-[var(--text-primary)] border border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-black"
-                data-filter="python">Python</button>
-            <button
-                class="filter-btn px-4 py-2 rounded-full font-semibold transition bg-[var(--bg-secondary)] text-[var(--text-primary)] border border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-black"
-                data-filter="react">React</button>
-            <button
-                class="filter-btn px-4 py-2 rounded-full font-semibold transition bg-[var(--bg-secondary)] text-[var(--text-primary)] border border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-black"
-                data-filter="postgresql">PostgreSQL</button>
-        </div>
+
 
         <!-- Cards Grid -->
         <div id="proj-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for project in projects %}
             <div class="proj-card-wrap project-card" data-tech="{{ project.tech_stack }}"
-                style="transition-delay: {{ forloop.counter0 }}00ms;">
+                style="transition-delay: calc({{ forloop.counter0 }} * 100ms);">
                 <div class="proj-card h-full flex flex-col">
                     <span class="proj-corner">[ SYS-{{ forloop.counter|stringformat:"02d" }} ]</span>
 
@@ -1183,72 +1005,120 @@
 
         observer.observe(projSection);
     })();
+</script>
 
-    /* ===== About Section JS: Matrix + Typewriter + Reveal ===== */
-    (function () {
-        /* Matrix Rain */
-        var canvas = document.getElementById('about-matrix-canvas');
-        if (canvas) {
-            var ctx = canvas.getContext('2d');
-            function res() {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-            }
-            res();
-            window.addEventListener('resize', res);
+<!-- Trainings Section -->
+<section id="trainings" class="relative py-24 overflow-hidden z-10 bg-black"
+    style="background: linear-gradient(135deg, #001100 0%, #000000 50%, #001100 100%);">
 
-            var columns = Math.floor(canvas.width / 20);
-            var drops = Array.from({ length: columns }, function () { return Math.random() * -100; });
-            var chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオカキクケコサシスセソタチツテトナニヌネノ";
-
-            function draw() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#0F0';
-                ctx.font = '15px monospace';
-                for (var i = 0; i < drops.length; i++) {
-                    var txt = chars.charAt(Math.floor(Math.random() * chars.length));
-                    ctx.fillText(txt, i * 20, drops[i] * 20);
-                    if (drops[i] * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                    drops[i]++;
-                }
-            }
-            setInterval(draw, 50);
+    <style>
+        /* Matrix background for Trainings */
+        #train-matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* Scroll Observer for Typewriter & Reveal */
-        var aboutSection = document.getElementById('about');
-        var targetHeading = document.getElementById('about-typewriter-target');
-        if (!aboutSection || !targetHeading) return;
+        .train-scanline-overlay {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(to bottom,
+                    transparent 0px, transparent 3px,
+                    rgba(0, 0, 0, 0.12) 3px, rgba(0, 0, 0, 0.12) 4px);
+            pointer-events: none;
+            z-index: 1;
+        }
 
-        var fullText = "About Me";
-        var isTyped = false;
-        var reveals = aboutSection.querySelectorAll('.about-reveal-up');
+        .train-heading {
+            position: relative;
+            display: inline-block;
+            color: #7FFF00;
+            text-shadow: 0 0 10px #7FFF00, 0 0 25px rgba(127, 255, 0, 0.4);
+            font-family: monospace;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #7FFF00;
+            width: 0;
+        }
 
-        var obs = new IntersectionObserver(function (entries) {
-            if (!entries[0].isIntersecting) return;
+        .train-heading.typed {
+            border-right-color: transparent;
+        }
 
-            // Typewriter
-            if (!isTyped) {
-                isTyped = true;
-                var idx = 0;
-                var timer = setInterval(function () {
-                    targetHeading.textContent = fullText.slice(0, idx);
-                    targetHeading.style.width = idx + 'ch';
-                    if (idx++ >= fullText.length) {
-                        clearInterval(timer);
-                        targetHeading.classList.add('done');
-                    }
-                }, 100);
-            }
+        .train-card {
+            background: rgba(0, 15, 0, 0.8);
+            border: 1px solid rgba(127, 255, 0, 0.2);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-            // Reveal Content
-            reveals.forEach(function (el) { el.classList.add('visible'); });
-        }, { threshold: 0.15 });
+        .train-card:hover {
+            transform: translateY(-8px);
+            border-color: #7FFF00;
+            box-shadow: 0 0 30px rgba(127, 255, 0, 0.2);
+        }
 
-        obs.observe(aboutSection);
-    })();
-</script>
+        .train-reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .train-reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .train-tag {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: #7FFF00;
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+    </style>
+
+    <div class="relative z-10 container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">
+                <span id="train-heading-text" class="train-heading"></span>
+            </h2>
+            <div class="mx-auto h-0.5 bg-gradient-to-r from-transparent via-[#7FFF00] to-transparent"
+                style="width: 8rem; margin-top: 0.5rem; opacity: 0.6;"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            {% for training in trainings %}
+            <div class="train-reveal-up" style="transition-delay: calc({{ forloop.counter0 }} * 100ms);">
+                <div class="train-card p-10 h-full flex flex-col">
+                    <span class="train-tag block mb-4">[ TRN-{{ forloop.counter|stringformat:"02d" }} ]</span>
+                    <h3 class="text-2xl font-bold text-[#7FFF00] mb-2 font-mono">{{ training.title }}</h3>
+                    <p class="text-green-100/80 font-mono text-sm mb-4">
+                        {{ training.institution }}{% if training.company %} <span class="text-[#7FFF00]/50">|</span> {{
+                        training.company }}{% endif %}
+                    </p>
+                    <div class="flex-grow">
+                        <p class="text-green-100/60 font-mono leading-relaxed">{{ training.description }}</p>
+                    </div>
+                    {% if training.date_range %}
+                    <div class="mt-6 pt-4 border-t border-green-500/20">
+                        <span class="text-[#7FFF00]/40 font-mono text-xs uppercase letter-spacing-2">{{
+                            training.date_range }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 <!-- Certificates Section -->
 <section id="certificates" class="relative py-24 overflow-hidden z-20 bg-black"

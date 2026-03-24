@@ -29,6 +29,8 @@ urlpatterns = [
     path('projects/', include('projects_app.urls')),
     path('contact/', include('contact_app.urls')),
     path('certificates/', account_views.certificate_list, name='certificates'),
+    path('resume/', account_views.resume_view, name='resume'),
+    path('education/', account_views.education_view, name='education'),
     path('', account_views.home, name='home'),
 ]
 

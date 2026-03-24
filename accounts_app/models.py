@@ -31,6 +31,16 @@ class Skill(models.Model):
     def __str__(self):
         return f"{self.name} ({self.get_category_display()})"
 
+class Training(models.Model):
+    title = models.CharField(max_length=200)
+    institution = models.CharField(max_length=200)
+    company = models.CharField(max_length=200, blank=True, null=True, help_text="Company providing the training if applicable.")
+    description = models.TextField(blank=True)
+    date_range = models.CharField(max_length=100, blank=True, null=True, help_text="e.g. Summer 2024")
+    
+    def __str__(self):
+        return self.title
+
 class Education(models.Model):
     institution = models.CharField(max_length=200)
     degree = models.CharField(max_length=200)

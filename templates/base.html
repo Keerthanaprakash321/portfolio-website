@@ -105,38 +105,20 @@
 
                 <a href="{% url 'home' %}#home"
                     class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Home</a>
-                <a href="{% url 'home' %}#about"
-                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">About</a>
                 <a href="{% url 'home' %}#skills"
                     class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Skills</a>
                 <a href="{% url 'home' %}#projects"
                     class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Projects</a>
                 <a href="{% url 'contact' %}"
                     class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Contact</a>
-
+                <a href="{% url 'resume' %}"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Resume</a>
+                <a href="{% url 'education' %}"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Education</a>
                 <a href="{% url 'certificates' %}"
-                    class="footer-icon flex items-center gap-2 text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    Certificates
-                </a>
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Certificates</a>
 
-                {% if user.is_authenticated %}
-                <a href="{% url 'dashboard' %}"
-                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors ml-4">Dashboard</a>
 
-                <form action="{% url 'logout' %}" method="post" class="inline ml-2">
-                    {% csrf_token %}
-                    <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">Logout</button>
-                </form>
-                {% else %}
-                <a href="{% url 'dashboard' %}"
-                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors ml-4">Dashboard</a>
-                <a href="{% url 'login' %}"
-                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors ml-4">Login</a>
-                {% endif %}
             </div>
         </div>
     </nav>

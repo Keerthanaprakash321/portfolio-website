@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
-from .models import Profile, Skill, Education, Experience, Certificate
+from .models import Profile, Skill, Education, Experience, Certificate, Training
 from .forms import LoginForm, CertificateForm
 
 from projects_app.models import Project
@@ -19,40 +19,24 @@ def home(request):
         skills = Skill.objects.all()
         projects = Project.objects.all()
         certificates = Certificate.objects.filter(profile=profile)
+        trainings = Training.objects.all()
     except Exception as e:
         profile = None
         skills = []
         projects = []
         certificates = []
+        trainings = []
     
     context = {
         'profile': profile,
         'skills': skills,
         'projects': projects,
         'certificates': certificates,
+        'trainings': trainings,
     }
     return render(request, 'accounts_app/home.html', context)
 
 
-def about(request):
-    try:
-        profile = Profile.objects.first()
-        education = Education.objects.filter(profile=profile)
-        experience = Experience.objects.filter(profile=profile)
-        skills = Skill.objects.all()
-    except Exception:
-        profile = None
-        education = []
-        experience = []
-        skills = []
-
-    context = {
-        'profile': profile,
-        'education': education,
-        'experience': experience,
-        'skills': skills,
-    }
-    return render(request, 'accounts_app/about.html', context)
 
 @login_required
 def dashboard(request):
@@ -126,3 +110,13 @@ def logout_view(request):
 def certificate_list(request):
     certificates = Certificate.objects.all()
     return render(request, 'accounts_app/certificates.html', {'certificates': certificates})
+
+def resume_view(request):
+    return render(request, 'accounts_app/resume.html')
+
+def education_view(request):
+    from .models import Profile, Education, Training
+    profile = Profile.objects.first()
+    education = Education.objects.filter(profile=profile).order_by('-start_date') if profile else []
+    trainings = Training.objects.all().order_by('-id')
+    return render(request, 'accounts_app/education.html', {'education': education, 'trainings': trainings})

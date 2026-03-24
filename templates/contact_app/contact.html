@@ -3,59 +3,97 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
-<div class="max-w-2xl mx-auto pt-20 pb-12">
-    <div class="bg-[var(--bg-primary)] p-8 rounded-lg shadow-md border border-[var(--border-color)] mt-10">
-        <h1 class="text-3xl font-bold mb-8 text-center text-[var(--text-primary)]">Get In Touch</h1>
-        <form method="post">
-            {% csrf_token %}
+<div class="max-w-6xl mx-auto pt-20 pb-12 px-6">
+    <div class="flex flex-col md:flex-row gap-12 mt-10 items-center md:items-stretch">
 
-            {% if form.non_field_errors %}
-            <div class="mb-4 text-red-500">
-                {{ form.non_field_errors }}
+        <!-- Left Side: Contact Info -->
+        <div class="md:w-1/2 flex flex-col justify-center text-[var(--text-primary)]">
+            <h1
+                class="text-4xl md:text-5xl font-bold mb-6 font-mono tracking-tight drop-shadow-[0_0_10px_rgba(0,170,0,0.6)]">
+                Get In Touch</h1>
+            <p class="text-lg opacity-80 mb-8 leading-relaxed font-mono">
+                Have a question, collaboration idea, or internship opportunity? Feel free to reach out — I’d love to
+                connect.
+            </p>
+
+            <div class="space-y-6 font-mono text-lg">
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl">📧</span>
+                    <a href="mailto:keerthana76666@gmail.com"
+                        class="hover:text-[var(--text-accent)] transition-colors">keerthana76666@gmail.com</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl">📱</span>
+                    <a href="tel:6238705946" class="hover:text-[var(--text-accent)] transition-colors">6238705946</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl">🔗</span>
+                    <a href="https://www.linkedin.com/in/KeerthanaPrakashKP" target="_blank"
+                        class="hover:text-[var(--text-accent)] transition-colors">LinkedIn Profile</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl">💻</span>
+                    <a href="https://github.com/Keerthanaprakash321" target="_blank"
+                        class="hover:text-[var(--text-accent)] transition-colors">GitHub Profile</a>
+                </div>
             </div>
-            {% endif %}
+        </div>
 
-            <div class="mb-4">
-                <label for="{{ form.name.id_for_label }}"
-                    class="block text-[var(--text-primary)] font-bold mb-2">Name</label>
-                {{ form.name }}
-                {% if form.name.errors %}
-                <p class="text-red-500 text-xs italic">{{ form.name.errors.0 }}</p>
+        <!-- Right Side: Contact Form -->
+        <div
+            class="md:w-1/2 w-full bg-[var(--bg-primary)] p-8 rounded-lg shadow-[0_0_20px_rgba(0,170,0,0.15)] border border-[var(--border-color)]">
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div class="mb-4 text-red-500">
+                    {{ form.non_field_errors }}
+                </div>
                 {% endif %}
-            </div>
 
-            <div class="mb-4">
-                <label for="{{ form.email.id_for_label }}"
-                    class="block text-[var(--text-primary)] font-bold mb-2">Email</label>
-                {{ form.email }}
-                {% if form.email.errors %}
-                <p class="text-red-500 text-xs italic">{{ form.email.errors.0 }}</p>
-                {% endif %}
-            </div>
+                <div class="mb-4">
+                    <label for="{{ form.name.id_for_label }}"
+                        class="block text-[var(--text-primary)] font-bold mb-2 font-mono">Name</label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                    <p class="text-red-500 text-xs italic mt-1">{{ form.name.errors.0 }}</p>
+                    {% endif %}
+                </div>
 
-            <div class="mb-4">
-                <label for="{{ form.subject.id_for_label }}"
-                    class="block text-[var(--text-primary)] font-bold mb-2">Subject</label>
-                {{ form.subject }}
-                {% if form.subject.errors %}
-                <p class="text-red-500 text-xs italic">{{ form.subject.errors.0 }}</p>
-                {% endif %}
-            </div>
+                <div class="mb-4">
+                    <label for="{{ form.email.id_for_label }}"
+                        class="block text-[var(--text-primary)] font-bold mb-2 font-mono">Email</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <p class="text-red-500 text-xs italic mt-1">{{ form.email.errors.0 }}</p>
+                    {% endif %}
+                </div>
 
-            <div class="mb-6">
-                <label for="{{ form.message.id_for_label }}"
-                    class="block text-[var(--text-primary)] font-bold mb-2">Message</label>
-                {{ form.message }}
-                {% if form.message.errors %}
-                <p class="text-red-500 text-xs italic">{{ form.message.errors.0 }}</p>
-                {% endif %}
-            </div>
+                <div class="mb-4">
+                    <label for="{{ form.subject.id_for_label }}"
+                        class="block text-[var(--text-primary)] font-bold mb-2 font-mono">Subject</label>
+                    {{ form.subject }}
+                    {% if form.subject.errors %}
+                    <p class="text-red-500 text-xs italic mt-1">{{ form.subject.errors.0 }}</p>
+                    {% endif %}
+                </div>
 
-            <button type="submit"
-                class="w-full bg-[var(--bg-secondary)] text-[var(--text-primary)] font-bold py-3 px-4 rounded border border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-black transition duration-200">
-                Send Message
-            </button>
-        </form>
+                <div class="mb-6">
+                    <label for="{{ form.message.id_for_label }}"
+                        class="block text-[var(--text-primary)] font-bold mb-2 font-mono">Message</label>
+                    {{ form.message }}
+                    {% if form.message.errors %}
+                    <p class="text-red-500 text-xs italic mt-1">{{ form.message.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-[var(--bg-secondary)] text-[var(--text-primary)] font-bold py-3 px-4 rounded border border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-black transition duration-300 transform hover:scale-[1.02] shadow-[0_0_10px_rgba(0,170,0,0.3)] font-mono tracking-wider">
+                    Send Message
+                </button>
+            </form>
+        </div>
+
     </div>
 </div>
 {% endblock %}
