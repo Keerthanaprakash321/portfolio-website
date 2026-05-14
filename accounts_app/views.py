@@ -38,19 +38,21 @@ def home(request):
 
 
 
-@login_required
 def dashboard(request):
     try:
         # Fetch the admin's profile (first one created)
         profile = Profile.objects.first()
         certificates = Certificate.objects.filter(profile=profile)
+        projects = Project.objects.all()
     except Exception:
         profile = None
         certificates = []
+        projects = []
     
     return render(request, 'accounts_app/dashboard.html', {
         'owner_profile': profile,
-        'certificates': certificates
+        'certificates': certificates,
+        'projects': projects
     })
 
 @login_required
@@ -67,6 +69,32 @@ def create_certificate(request):
     else:
         form = CertificateForm()
     return render(request, 'accounts_app/certificate_form.html', {'form': form, 'title': 'Add Certificate'})
+
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def update_certificate(request, pk):
+    from django.shortcuts import get_object_or_404
+    certificate = get_object_or_404(Certificate, pk=pk)
+    if request.method == 'POST':
+        form = CertificateForm(request.POST, request.FILES, instance=certificate)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Certificate updated successfully!')
+            return redirect('dashboard')
+    else:
+        form = CertificateForm(instance=certificate)
+    return render(request, 'accounts_app/certificate_form.html', {'form': form, 'title': 'Edit Certificate'})
+
+@login_required
+@user_passes_test(lambda u: u.is_staff)
+def delete_certificate(request, pk):
+    from django.shortcuts import get_object_or_404
+    certificate = get_object_or_404(Certificate, pk=pk)
+    if request.method == 'POST':
+        certificate.delete()
+        messages.success(request, 'Certificate deleted successfully!')
+        return redirect('dashboard')
+    return render(request, 'accounts_app/certificate_confirm_delete.html', {'certificate': certificate})
 
 
 

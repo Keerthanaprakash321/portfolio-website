@@ -117,8 +117,18 @@
                     class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Education</a>
                 <a href="{% url 'certificates' %}"
                     class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors">Certificates</a>
-
-
+                <a href="{% url 'dashboard' %}"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors font-bold">Dashboard</a>
+                
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" class="inline">
+                    {% csrf_token %}
+                    <button type="submit" class="text-[var(--text-primary)] hover:text-red-500 transition-colors font-bold ml-2">Logout</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}"
+                    class="text-[var(--text-primary)] hover:text-[var(--text-accent)] transition-colors font-bold ml-2 border border-[var(--text-primary)] px-3 py-1 rounded">Login</a>
+                {% endif %}
             </div>
         </div>
     </nav>
