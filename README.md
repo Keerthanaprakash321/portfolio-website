@@ -39,5 +39,5 @@ Portfolio/
 ## Author
 **Keerthana Prakash**
 - **GitHub**: [Keerthanaprakash321](https://github.com/Keerthanaprakash321)
-- **Email**: [Your Email Here] <!-- Please update this with your actual email address -->
+- **Email**: keerthana76666@gmail.com <!-- Please update this with your actual email address -->
 - **Phone**: +91 6238705946
