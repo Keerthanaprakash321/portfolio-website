@@ -16,7 +16,7 @@ A full-stack, production-ready personal portfolio website built with Django. It 
 
 ## Tech Stack
 - **Backend**: Python, Django, Django REST Framework
-- **Database**: PostgreSQL (Neon Serverless Postgres)
+- **Database**: PostgreSQL 
 - **Frontend/Styling**: HTML5, Django Templates, Tailwind CSS
 - **Deployment**: Vercel (Serverless), Gunicorn, Docker
 - **Static File Management**: WhiteNoise
